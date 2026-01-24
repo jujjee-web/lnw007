@@ -1,0 +1,18 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "news"
+    label: "ข่าว"
+    folder: "content/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "หัวข้อ", name: "title", widget: "string" }
+      - { label: "รูป", name: "image", widget: "image", required: false }
+      - { label: "เนื้อหา", name: "body", widget: "markdown" }
+      - { label: "สถานะ", name: "status", widget: "select", options: ["on","off"], default: "on" }
