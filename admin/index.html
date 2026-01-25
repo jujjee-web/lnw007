@@ -2,27 +2,31 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Lnw007</title>
+<title>lnw007 Admin</title>
+
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
 </head>
 
 <body>
-<h1>Lnw007</h1>
+
+<h1>lnw007 Admin</h1>
 
 <script>
-  // ถ้ามี token (invite/recovery/confirmation) ให้ส่งไปให้หน้า /admin จัดการ
-  if (location.hash && /token=/.test(location.hash)) {
-    location.replace("/admin/" + location.hash);
-  }
+if (window.netlifyIdentity) {
 
-  // เปิด Identity widget เพื่อให้ผู้ใช้ตั้งรหัส/ล็อกอินได้
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", function () {
+  window.netlifyIdentity.on("init", user => {
+    if (!user) {
       window.netlifyIdentity.open();
-    });
-  }
-</script>
+    }
+  });
 
+  window.netlifyIdentity.on("login", user => {
+    location.href = "/admin/";
+  });
+
+}
+</script>
 
 </body>
 </html>
