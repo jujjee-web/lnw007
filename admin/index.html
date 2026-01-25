@@ -3,7 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <title>Lnw007 Admin</title>
+
+  <!-- Netlify Identity -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <!-- Decap CMS -->
   <script src="https://unpkg.com/decap-cms@latest/dist/decap-cms.js"></script>
 </head>
-<body></body>
+<body>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.open();
+      }
+    });
+  }
+</script>
+</body>
 </html>
