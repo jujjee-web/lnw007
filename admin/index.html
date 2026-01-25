@@ -10,12 +10,19 @@
 <h1>Lnw007</h1>
 
 <script>
-if (window.netlifyIdentity) {
-  window.netlifyIdentity.on("init", user => {
-    window.netlifyIdentity.open();
-  });
-}
+  // ถ้ามี token (invite/recovery/confirmation) ให้ส่งไปให้หน้า /admin จัดการ
+  if (location.hash && /token=/.test(location.hash)) {
+    location.replace("/admin/" + location.hash);
+  }
+
+  // เปิด Identity widget เพื่อให้ผู้ใช้ตั้งรหัส/ล็อกอินได้
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", function () {
+      window.netlifyIdentity.open();
+    });
+  }
 </script>
+
 
 </body>
 </html>
