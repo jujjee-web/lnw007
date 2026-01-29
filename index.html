@@ -9,5 +9,16 @@
   <h1>lnw007</h1>
   <p>Home page</p>
   <p><a href="/admin/">Go to Admin</a></p>
+  
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on('init', user => {
+      // ถ้ามี token (invite/recovery) ให้เปิดหน้าจัดการอัตโนมัติ
+      if (!user) window.netlifyIdentity.open();
+    });
+  }
+</script>
+
 </body>
 </html>
