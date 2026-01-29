@@ -6,19 +6,27 @@
 </head>
 
 <body>
-<h1>ข่าวบอลล่าสุด</h1>
 
+<h1>ข่าวบอลล่าสุด</h1>
 <div id="news"></div>
 
 <script>
-fetch('https://api.github.com/repos/jujee-web/lnw007/contents/content/posts')
-.then(r=>r.json())
-.then(files=>{
-  let html='';
-  files.forEach(f=>{
-    html+=`<p><a href="${f.download_url}" target="_blank">${f.name}</a></p>`;
+const repo = "jujee-web/lnw007";
+const path = "content/posts";
+
+fetch(`https://api.github.com/repos/${repo}/contents/${path}`)
+.then(res => res.json())
+.then(data => {
+  let html = "";
+  data.forEach(file => {
+    if(file.name.endsWith(".md")){
+      html += `<p><a href="${file.download_url}" target="_blank">${file.name}</a></p>`;
+    }
   });
-  document.getElementById('news').innerHTML=html;
+  document.getElementById("news").innerHTML = html || "ยังไม่มีข่าว";
+})
+.catch(err=>{
+  document.getElementById("news").innerHTML = "โหลดข่าวไม่ได้";
 });
 </script>
 
