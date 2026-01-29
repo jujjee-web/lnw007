@@ -11,23 +11,15 @@
 <div id="news"></div>
 
 <script>
-const repo = "jujee-web/lnw007";
-const path = "content/posts";
+fetch("/content/posts")
+.then(()=>fetch("/content/posts"))
+.catch(()=>{})
 
-fetch(`https://api.github.com/repos/${repo}/contents/${path}`)
-.then(res => res.json())
-.then(data => {
-  let html = "";
-  data.forEach(file => {
-    if(file.name.endsWith(".md")){
-      html += `<p><a href="${file.download_url}" target="_blank">${file.name}</a></p>`;
-    }
-  });
-  document.getElementById("news").innerHTML = html || "ยังไม่มีข่าว";
-})
-.catch(err=>{
-  document.getElementById("news").innerHTML = "โหลดข่าวไม่ได้";
-});
+fetch("/content/posts")
+.then(()=>document.getElementById("news").innerHTML="กรุณารีเฟรช")
+.catch(()=>{});
+
+fetch("/content/posts")
 </script>
 
 </body>
