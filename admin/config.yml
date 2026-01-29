@@ -2,17 +2,17 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "assets/uploads"
-public_folder: "/assets/uploads"
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
 
 collections:
-  - name: "news"
-    label: "ข่าว"
-    folder: "content/news"
+  - name: "posts"
+    label: "ข่าวบอล"
+    folder: "content/posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "หัวข้อ", name: "title", widget: "string" }
-      - { label: "รูป", name: "image", widget: "image", required: false }
+      - { label: "วันที่", name: "date", widget: "datetime" }
+      - { label: "รูปปก", name: "thumbnail", widget: "image", required: false }
       - { label: "เนื้อหา", name: "body", widget: "markdown" }
-      - { label: "สถานะ", name: "status", widget: "select", options: ["on","off"], default: "on" }
