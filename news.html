@@ -11,15 +11,15 @@
 <div id="news"></div>
 
 <script>
-fetch("/content/posts")
-.then(()=>fetch("/content/posts"))
-.catch(()=>{})
-
-fetch("/content/posts")
-.then(()=>document.getElementById("news").innerHTML="กรุณารีเฟรช")
-.catch(()=>{});
-
-fetch("/content/posts")
+fetch("/posts.json")
+.then(r=>r.json())
+.then(posts=>{
+  let html="";
+  posts.forEach(p=>{
+    html+=`<h3>${p.title}</h3><p>${p.body}</p><hr>`;
+  });
+  document.getElementById("news").innerHTML = html || "ยังไม่มีข่าว";
+});
 </script>
 
 </body>
