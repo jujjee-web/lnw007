@@ -1,6 +1,5 @@
-[
-  {
-    "title":"ลิเวอร์พูลชนะ 3-0",
-    "body":"รายละเอียดข่าว..."
-  }
-]
+{
+  "layout": "_includes/layout.njk",
+  "tags": "posts",
+  "permalink": "/news/{{ title | slug }}/index.html"
+}
