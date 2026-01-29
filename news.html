@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ข่าวบอล - lnw007</title>
+</head>
+
+<body>
+<h1>ข่าวบอลล่าสุด</h1>
+
+<div id="news"></div>
+
+<script>
+fetch('https://api.github.com/repos/jujee-web/lnw007/contents/content/posts')
+.then(r=>r.json())
+.then(files=>{
+  let html='';
+  files.forEach(f=>{
+    html+=`<p><a href="${f.download_url}" target="_blank">${f.name}</a></p>`;
+  });
+  document.getElementById('news').innerHTML=html;
+});
+</script>
+
+</body>
+</html>
