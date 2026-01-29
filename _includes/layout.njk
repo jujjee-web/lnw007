@@ -6,13 +6,15 @@
   <title>{{ title or "lnw007" }}</title>
 </head>
 <body>
-  <header style="padding:16px; border-bottom:1px solid #ddd;">
-    <a href="/" style="text-decoration:none;">lnw007</a> |
-    <a href="/news/">ข่าวบอล</a>
-  </header>
 
-  <main style="max-width:900px; margin:24px auto; padding:0 16px;">
-    {{ content | safe }}
-  </main>
+<header style="padding:16px;border-bottom:1px solid #ddd">
+  <a href="/">lnw007</a> |
+  <a href="/news/">ข่าวบอล</a>
+</header>
+
+<main style="max-width:900px;margin:24px auto;padding:0 16px">
+  {{ content | safe }}
+</main>
+
 </body>
 </html>
